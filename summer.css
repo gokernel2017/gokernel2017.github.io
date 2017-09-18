@@ -23,7 +23,7 @@ titlebar {
 
   background-image: linear-gradient(to bottom, rgb(235,235,235), rgb(213,213,213));
 
-  color: #4d494d;
+  color: rgb(210,84,0);
   font-size: 14pt;
   line-height: 20px;
   text-align: center;
@@ -37,6 +37,8 @@ titlebar {
   -ms-user-select: none;
   -o-user-select: none;
   cursor: default;
+
+  -webkit-app-region: drag;
 }
 
 btclose {
@@ -46,6 +48,34 @@ btclose {
   top: 7px;
 
   background: #ff5c5c;
+  font-size: 9pt;
+  width: 11px;
+  height: 11px;
+  border: 1px solid #e33e41;
+  border-radius: 50%;
+  display: inline-block;
+}
+btmini {
+  position: absolute;
+
+  left: 28px;
+  top: 7px;
+
+  background: rgb(255,189,76);
+  font-size: 9pt;
+  width: 11px;
+  height: 11px;
+  border: 1px solid #e33e41;
+  border-radius: 50%;
+  display: inline-block;
+}
+btmax {
+  position: absolute;
+
+  left: 49px;
+  top: 7px;
+
+  background: rgb(0,255,0);
   font-size: 9pt;
   width: 11px;
   height: 11px;

@@ -23,16 +23,50 @@ function so_Init () {
 
 
 function so_NewWindow(x,y,w,h,txt) {
+  var _x_, _y_, _w_, _h_; // to restore saved window size
+
   var o=document.createElement("widget");
   var b=document.createElement("titlebar");
-  var c=document.createElement("btclose");
+
+  var close=document.createElement("btclose");
+  var mini=document.createElement("btmini");
+  var max=document.createElement("btmax");
 
   o.style.left = x+'px';
   o.style.top = y+'px';
   o.style.width = w+'px';
   o.style.height = h+'px';
+  sizeW = h+'px';
 
   b.innerHTML = txt;
+
+  // save:
+  _x_ = o.style.left;
+  _y_ = o.style.top;
+  _w_ = o.style.width;
+  _h_ = o.style.height;
+
+  mini.onclick = function() {
+    // restore:
+    o.style.left = _x_;
+    o.style.top = _y_;
+    o.style.width = _w_;
+    o.style.height = _h_;
+  }
+
+  max.onclick = function() {
+    var ww = window,
+    d = document,
+    e = d.documentElement,
+    g = d.getElementsByTagName('body'),
+    xx = w.innerWidth || e.clientWidth || g.clientWidth,
+    yy = w.innerHeight|| e.clientHeight|| g.clientHeight;
+
+    o.style.left = 5+'px';
+    o.style.top = 5+'px';
+    o.style.width = xx-20+'px';
+    o.style.height = yy-20+'px';
+  }
 
   if (isTouch) {
     //-------------------------------------------
@@ -49,15 +83,15 @@ function so_NewWindow(x,y,w,h,txt) {
             this.offsetTop  - t.clientY
           ];
       }
-//      var array = document.getElementsByTagName("widget");
+      var array = document.getElementsByTagName("widget");
 
       //
       // Envia para o TOPO O WIDGET ...
       //
-//      for (var i = 0; i < array.length; i++) {
-//          array[i].style.zIndex = 1;
-//      }
-//      this.style.zIndex = array.length;
+      for (var i = 0; i < array.length; i++) {
+          array[i].style.zIndex = 1;
+      }
+      this.style.zIndex = array.length;
     }, true);
 
     o.addEventListener('touchend', function () { isDown = false; }, true);
@@ -80,16 +114,14 @@ function so_NewWindow(x,y,w,h,txt) {
     //-------------------------------------------
     //
     o.addEventListener('mousedown', function(event) {
-      if (event.clientY-this.offsetTop < 30) {
+      if (event.clientX-this.offsetLeft > 64 && event.clientY-this.offsetTop < 30) {
           isDown = true;
           offset = [
             this.offsetLeft - event.clientX,
             this.offsetTop - event.clientY
           ];
       }
-
-//      var array = document.getElementsByTagName("widget");
-/*
+      var array = document.getElementsByTagName("widget");
       //
       // Envia para o TOPO O WIDGET ...
       //
@@ -97,7 +129,6 @@ function so_NewWindow(x,y,w,h,txt) {
           array[i].style.zIndex = 1;
       }
       this.style.zIndex = array.length;
-*/
     }, true);
 
     o.addEventListener('mouseup', function() { isDown = false; }, true);
@@ -115,7 +146,9 @@ function so_NewWindow(x,y,w,h,txt) {
 
   }
 
-  b.appendChild(c); // close button
+  b.appendChild(close); // close button
+  b.appendChild(mini); // close button
+  b.appendChild(max); // button maximize
   o.appendChild(b); // add title
   document.body.appendChild(o); // add here
 
