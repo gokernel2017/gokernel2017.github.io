@@ -1,0 +1,13 @@
+{
+  "name": "Summer OBJECT",
+  "main": "index.html",
+  "window": {
+    "toolbar": false,
+    "resizable": false,
+    "width": 800,
+    "height": 600
+  },
+  "scripts": {
+    "start": "nw ."
+  }
+}

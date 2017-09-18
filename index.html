@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<body>
+<link rel="stylesheet" href="summer.css" />
+<script src="summer.js"></script>
+<div>Summer OBJECT - Portable API Version 0.1.0</div>
+<script>
+//
+//-----------------------------------------------
+// Summer OBJECT - Portable Object API:
+//-----------------------------------------------
+//
+var win;
+
+function DisplayInfo() {
+  if (isTouch) {
+    alert ("Touch found Sucess !!!");
+  } else {
+    alert ("SORRY: TOUCH NOT FOUND");
+  }
+}
+
+  if (so_Init()) {
+
+      so_NewWindow (250, 150, 300, 250, "Window | Mova-me:");
+
+      win = so_NewWindow (20, 50, 300, 250, "Janela Primeira HELLO");
+      so_NewButton (120, 120, 100, 30, "Is Touch", win, DisplayInfo);
+
+  }
+
+</script>
+</body>
+</html>
