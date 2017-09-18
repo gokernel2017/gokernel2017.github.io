@@ -21,7 +21,16 @@ titlebar {
   width: 100%;
   height: 28px;
 
+
   background-image: linear-gradient(to bottom, rgb(235,235,235), rgb(213,213,213));
+/*
+<img src="close.png">
+  background-image:url('close.png');
+  background: url('close.png') 0 0;
+*/
+
+
+
 
   color: rgb(210,84,0);
   font-size: 14pt;
@@ -40,6 +49,7 @@ titlebar {
 
   -webkit-app-region: drag;
 }
+
 
 btclose {
   position: absolute;

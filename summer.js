@@ -28,9 +28,18 @@ function so_NewWindow(x,y,w,h,txt) {
   var o=document.createElement("widget");
   var b=document.createElement("titlebar");
 
-  var close=document.createElement("btclose");
+//  var close=document.createElement("btclose");
   var mini=document.createElement("btmini");
   var max=document.createElement("btmax");
+
+
+  // button close:
+  //
+  var image=document.createElement("img");
+  image.src = "close.png";
+  image.style.position = 'absolute';
+  image.style.left = 5+'px';
+  image.style.top = 4+'px';
 
   o.style.left = x+'px';
   o.style.top = y+'px';
@@ -146,9 +155,12 @@ function so_NewWindow(x,y,w,h,txt) {
 
   }
 
-  b.appendChild(close); // close button
+  b.appendChild(image); // image button
+
+//  b.appendChild(close); // close button
   b.appendChild(mini); // close button
   b.appendChild(max); // button maximize
+
   o.appendChild(b); // add title
   document.body.appendChild(o); // add here
 
