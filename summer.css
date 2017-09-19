@@ -7,7 +7,7 @@ widget { /* window widget */
   width: 100px;
   height: 100px;
 
-  background: #fff;
+  background: rgb(254,238,204);
   border: 1px solid #acacac;
   border-radius: 6px;
 }
