@@ -22,24 +22,15 @@ function so_Init () {
     alert ("INIT ERRO: tag: <body> or tag: <link rel='stylesheet' href='garden.css' /> not found");
     return 0;
   }
-
-  document.onmousemove = function(event) {
-    //-------------------------------------------
-    // isDown == true
-    // on click in the window title bar.
-    //-------------------------------------------
-    if (isDown) {
-      if (isTouch) { // mobile
-        var t = event.changedTouches[0];
-        event.preventDefault();
-        //
-        // change widget position ( style value )
-        //
-        mx = t.clientX;
-        my = t.clientY;
-        main_widget.style.left = (t.clientX + offset[0]) + 'px';
-        main_widget.style.top  = (t.clientY + offset[1]) + 'px';
-      } else { // no mobile
+  
+  if (isTouch==false) {
+    // desktop event: no mobile
+    document.onmousemove = function(event) {
+      //-------------------------------------------
+      // isDown == true
+      // on click in the window title bar.
+      //-------------------------------------------
+      if (isDown) {
         event.preventDefault();
         //
         // change widget position ( style value )
@@ -48,9 +39,9 @@ function so_Init () {
         my = event.clientY;
         main_widget.style.left = (event.clientX + offset[0]) + 'px';
         main_widget.style.top  = (event.clientY + offset[1]) + 'px';
-      }
-    }//: if (isDown)
-  }//: document.onmousemove = function(event)
+      }//: if (isDown)
+    }//: document.onmousemove = function(event)
+  }//: if (isTouch==false)
 
   return 1;
 }
@@ -137,7 +128,6 @@ function so_NewWindow(x,y,w,h,txt) {
 
     o.addEventListener('touchend', function () { isDown = false; }, true);
 
-/*
     o.addEventListener('touchmove', function(event) {
       var t = event.changedTouches[0];
 
@@ -150,7 +140,7 @@ function so_NewWindow(x,y,w,h,txt) {
         this.style.top  = (t.clientY + offset[1]) + 'px';
       }
     }, true);
-*/
+
   } else {
     //-------------------------------------------
     // DESKTOP MOUSE EVENT:
