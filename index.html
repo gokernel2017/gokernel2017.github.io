@@ -4,7 +4,15 @@
 <link rel="stylesheet" href="summer.css" />
 <script src="summer.js"></script>
 <div id="display">Summer OBJECT - Portable API Version 0.1.0</div>
+
+
 <script>
+/*
+<tooltip>
+  <tooltiptext>Hello World</tooltiptext>
+</tooltip>
+*/
+
 //
 //-----------------------------------------------
 // Summer OBJECT - Portable Object API:
@@ -14,17 +22,17 @@ var win;
 
 function DisplayInfo() {
   if (isTouch) {
-    alert ("Touch found Sucess !!!");
+    alert ("Touch found Sucess: "+isTouch);
   } else {
-    alert ("SORRY: TOUCH NOT FOUND");
+    alert ("SORRY: TOUCH NOT FOUND: "+isTouch);
   }
 }
 
   if (so_Init()) {
 
-      so_NewWindow (250, 150, 300, 250, "Window_2 | Mova-me:");
+      so_NewWindow (250, 150, 300, 250, "Window | Mova-me:");
 
-      win = so_NewWindow (20, 50, 300, 250, "Janela_2 Primeira");
+      win = so_NewWindow (20, 50, 300, 250, "Janela Primeira");
       so_NewButton (120, 120, 100, 30, "Is Touch", win, DisplayInfo);
 
   }

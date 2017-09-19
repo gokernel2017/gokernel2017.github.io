@@ -10,13 +10,13 @@ var id=' ';
 var idCount=0;
 var isTouch=false;
 
-var offset = [0,0];
+var offset = [0, 0];
 var isDown = false;
 
 var mx, my; // mouse_x, mouse_y
 var main_widget;
 
-function so_Init () {
+function so_Init() {
   isTouch = (('ontouchstart' in window) || (navigator.MaxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0));
   if (document.getElementsByTagName("body").length==0 || document.getElementsByTagName("link").length==0) {
     alert ("INIT ERRO: tag: <body> or tag: <link rel='stylesheet' href='garden.css' /> not found");
@@ -70,30 +70,6 @@ function so_NewWindow(x,y,w,h,txt) {
   _y_ = o.style.top;
   _w_ = o.style.width;
   _h_ = o.style.height;
-
-/*
-  mini.onclick = function() {
-    // restore:
-    o.style.left = _x_;
-    o.style.top = _y_;
-    o.style.width = _w_;
-    o.style.height = _h_;
-  }
-
-  max.onclick = function() {
-    var ww = window,
-    d = document,
-    e = d.documentElement,
-    g = d.getElementsByTagName('body'),
-    xx = w.innerWidth || e.clientWidth || g.clientWidth,
-    yy = w.innerHeight|| e.clientHeight|| g.clientHeight;
-
-    o.style.left = 5+'px';
-    o.style.top = 5+'px';
-    o.style.width = xx-20+'px';
-    o.style.height = yy-20+'px';
-  }
-*/
 
   if (isTouch) {
     //-------------------------------------------
@@ -185,8 +161,60 @@ function so_NewWindow(x,y,w,h,txt) {
 */
   }
 
-  b.appendChild(bmin);
-  b.appendChild(bmax);
+
+
+  // tootip:
+  if (isTouch==false) {
+    var tt1=document.createElement("tooltip");
+    var tt_text1=document.createElement("tooltiptext");
+    tt_text1.innerHTML = "MAXIMIZE";
+
+    var tt2=document.createElement("tooltip");
+    var tt_text2=document.createElement("tooltiptext");
+    tt_text2.innerHTML = "Minimize";
+
+    tt1.style.right = 5+'px';
+    tt1.style.top = 5+'px';
+
+    tt2.style.right = 25+'px';
+    tt2.style.top = 5+'px';
+    tt_text2.style.left = -105+'px';
+    tt_text2.style.top = -5+'px';
+
+    tt_text1.style.left = -105+'px';
+    tt_text1.style.top = -5+'px';
+
+  tt2.onclick = function() {
+    // restore:
+    o.style.left = _x_;
+    o.style.top = _y_;
+    o.style.width = _w_;
+    o.style.height = _h_;
+  }
+
+  tt1.onclick = function() {
+    var ww = window,
+    d = document,
+    e = d.documentElement,
+    g = d.getElementsByTagName('body'),
+    xx = w.innerWidth || e.clientWidth || g.clientWidth,
+    yy = w.innerHeight|| e.clientHeight|| g.clientHeight;
+
+    o.style.left = 5+'px';
+    o.style.top = 5+'px';
+    o.style.width = xx-20+'px';
+    o.style.height = yy-20+'px';
+  }
+  }
+
+    tt1.appendChild(tt_text1);
+    b.appendChild(tt1);
+
+    tt2.appendChild(tt_text2);
+    b.appendChild(tt2);
+
+//  b.appendChild(bmin);
+//  b.appendChild(bmax);
 
   o.appendChild(b); // add title
   document.body.appendChild(o); // add here

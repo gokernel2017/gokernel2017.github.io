@@ -5,6 +5,7 @@ widget { /* window widget */
   left: 100px;
   width: 100px;
   height: 100px;
+//  background: rgb(255,250,243);
   background: rgb(254,238,204);
   border: 1px solid #acacac;
   border-radius: 6px;
@@ -107,4 +108,41 @@ btmax {
   border: 1px solid #e33e41;
   border-radius: 50%;
   display: inline-block;
+}
+
+tooltip {
+/*
+  position: relative;
+*/
+  position: absolute;
+
+  display: inline-block;
+  border-bottom: 1px dotted black;
+
+  width: 16px;
+  height: 16px;
+  border: 1px solid rgb(255,130,30);
+  border-radius: 3px;
+}
+tooltip tooltiptext {
+  visibility: hidden;
+  width: 100px;
+
+    background-color: black;
+    text-align: center;
+
+
+	color: #F0B015;
+  font-family: HelveticaNeue, 'Helvetica Neue', 'Lucida Grande', Arial, sans-serif;
+	font-size: 0.8em;
+	font-weight: normal;
+
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+tooltip:hover tooltiptext {
+    visibility: visible;
 }
