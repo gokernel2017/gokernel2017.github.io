@@ -3,7 +3,7 @@
 <body>
 <link rel="stylesheet" href="summer.css" />
 <script src="summer.js"></script>
-<a>Summer OBJECT - Portable API Version 0.1.0</a>
+<div id="display">Summer OBJECT - Portable API Version 0.1.0</div>
 <script>
 //
 //-----------------------------------------------
@@ -22,9 +22,9 @@ function DisplayInfo() {
 
   if (so_Init()) {
 
-      so_NewWindow (250, 150, 320, 250, "Window | Mova:");
+      so_NewWindow (250, 150, 300, 250, "Window_2 | Mova-me:");
 
-      win = so_NewWindow (20, 50, 300, 250, "Janela Primeira");
+      win = so_NewWindow (20, 50, 300, 250, "Janela_2 Primeira");
       so_NewButton (120, 120, 100, 30, "Is Touch", win, DisplayInfo);
 
   }
