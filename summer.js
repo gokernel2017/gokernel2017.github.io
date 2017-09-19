@@ -28,18 +28,10 @@ function so_NewWindow(x,y,w,h,txt) {
   var o=document.createElement("widget");
   var b=document.createElement("titlebar");
 
-//  var close=document.createElement("btclose");
-  var mini=document.createElement("btmini");
-  var max=document.createElement("btmax");
+  var bmin=document.createElement("wb_min");
+  var bmax=document.createElement("wb_max");
 
-
-  // button close:
-  //
-  var image=document.createElement("img");
-  image.src = "close.png";
-  image.style.position = 'absolute';
-  image.style.left = 5+'px';
-  image.style.top = 4+'px';
+  o.setAttribute("id", "main_body");
 
   o.style.left = x+'px';
   o.style.top = y+'px';
@@ -55,6 +47,7 @@ function so_NewWindow(x,y,w,h,txt) {
   _w_ = o.style.width;
   _h_ = o.style.height;
 
+/*
   mini.onclick = function() {
     // restore:
     o.style.left = _x_;
@@ -76,6 +69,7 @@ function so_NewWindow(x,y,w,h,txt) {
     o.style.width = xx-20+'px';
     o.style.height = yy-20+'px';
   }
+*/
 
   if (isTouch) {
     //-------------------------------------------
@@ -91,6 +85,8 @@ function so_NewWindow(x,y,w,h,txt) {
             this.offsetLeft - t.clientX,
             this.offsetTop  - t.clientY
           ];
+          // invisible title bar
+          b.style.display = 'none';
       }
       var array = document.getElementsByTagName("widget");
 
@@ -103,7 +99,7 @@ function so_NewWindow(x,y,w,h,txt) {
       this.style.zIndex = array.length;
     }, true);
 
-    o.addEventListener('touchend', function () { isDown = false; }, true);
+    o.addEventListener('touchend', function () { isDown = false; b.style.display = 'block'; }, true);
 
     o.addEventListener('touchmove', function(event) {
       var t = event.changedTouches[0];
@@ -123,12 +119,16 @@ function so_NewWindow(x,y,w,h,txt) {
     //-------------------------------------------
     //
     o.addEventListener('mousedown', function(event) {
-      if (event.clientX-this.offsetLeft > 64 && event.clientY-this.offsetTop < 30) {
+      //if (event.clientX-this.offsetLeft > 64 && event.clientY-this.offsetTop < 30) {
+      if (event.clientY-this.offsetTop < 30) {
           isDown = true;
           offset = [
             this.offsetLeft - event.clientX,
             this.offsetTop - event.clientY
           ];
+          // invisible title bar
+          b.style.display = 'none';
+        //document.getElementById("main_body").style.display = "none";
       }
       var array = document.getElementsByTagName("widget");
       //
@@ -140,7 +140,7 @@ function so_NewWindow(x,y,w,h,txt) {
       this.style.zIndex = array.length;
     }, true);
 
-    o.addEventListener('mouseup', function() { isDown = false; }, true);
+    o.addEventListener('mouseup', function() { isDown = false; b.style.display = 'block'; }, true);
 
     o.addEventListener('mousemove', function(event) {
       if (isDown && event.clientY < this.offsetTop+30) {
@@ -155,11 +155,8 @@ function so_NewWindow(x,y,w,h,txt) {
 
   }
 
-  b.appendChild(image); // image button
-
-//  b.appendChild(close); // close button
-  b.appendChild(mini); // close button
-  b.appendChild(max); // button maximize
+  b.appendChild(bmin);
+  b.appendChild(bmax);
 
   o.appendChild(b); // add title
   document.body.appendChild(o); // add here
