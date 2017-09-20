@@ -52,9 +52,6 @@ function so_NewWindow(x,y,w,h,txt) {
   var o=document.createElement("widget");
   var b=document.createElement("titlebar");
 
-  var bmin=document.createElement("wb_min");
-  var bmax=document.createElement("wb_max");
-
   o.setAttribute("id", "main_body");
 
   o.style.left = x+'px';
@@ -161,10 +158,15 @@ function so_NewWindow(x,y,w,h,txt) {
 */
   }
 
-
-
-  // tootip:
-  if (isTouch==false) {
+  if (isTouch) {// modile:
+    // buttons on title bar: Minimize, MAXIMIZE
+    //
+    var bmin=document.createElement("wb_min");
+    var bmax=document.createElement("wb_max");
+    b.appendChild(bmin);
+    b.appendChild(bmax);
+  } else {
+    // tootip:
     var tt1=document.createElement("tooltip");
     var tt_text1=document.createElement("tooltiptext");
     tt_text1.innerHTML = "MAXIMIZE";
@@ -184,37 +186,33 @@ function so_NewWindow(x,y,w,h,txt) {
     tt_text1.style.left = -105+'px';
     tt_text1.style.top = -5+'px';
 
-  tt2.onclick = function() {
-    // restore:
-    o.style.left = _x_;
-    o.style.top = _y_;
-    o.style.width = _w_;
-    o.style.height = _h_;
-  }
+    tt2.onclick = function() {
+      // restore:
+      o.style.left = _x_;
+      o.style.top = _y_;
+      o.style.width = _w_;
+      o.style.height = _h_;
+    }
 
-  tt1.onclick = function() {
-    var ww = window,
-    d = document,
-    e = d.documentElement,
-    g = d.getElementsByTagName('body'),
-    xx = w.innerWidth || e.clientWidth || g.clientWidth,
-    yy = w.innerHeight|| e.clientHeight|| g.clientHeight;
+    tt1.onclick = function() {
+      var ww = window,
+      d = document,
+      e = d.documentElement,
+      g = d.getElementsByTagName('body'),
+      xx = w.innerWidth || e.clientWidth || g.clientWidth,
+      yy = w.innerHeight|| e.clientHeight|| g.clientHeight;
 
-    o.style.left = 5+'px';
-    o.style.top = 5+'px';
-    o.style.width = xx-20+'px';
-    o.style.height = yy-20+'px';
-  }
-  }
-
+      o.style.left = 5+'px';
+      o.style.top = 5+'px';
+      o.style.width = xx-20+'px';
+      o.style.height = yy-20+'px';
+    }
     tt1.appendChild(tt_text1);
     b.appendChild(tt1);
 
     tt2.appendChild(tt_text2);
     b.appendChild(tt2);
-
-//  b.appendChild(bmin);
-//  b.appendChild(bmax);
+  }
 
   o.appendChild(b); // add title
   document.body.appendChild(o); // add here
