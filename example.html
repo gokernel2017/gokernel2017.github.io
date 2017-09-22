@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<body>
+<link rel="stylesheet" href="summer.css" />
+<script src="summer.js"></script>
+
+<nav class="nav nav--red">
+  <ul class="nav__list">
+    <li class="nav__list__item"><a href="index.html">My Blog</a></li>
+    <li class="nav__list__item"><a href="example.html">Summer OBJECT</a></li>
+    <li class="nav__list__item"><a href="about.html">About Me</a></li>
+  </ul>
+</nav>
+
+<a>
+<br>Summer OBJECT - Portable API Version 0.1.0
+</a>
+
+<script>
+//
+//-----------------------------------------------
+// Summer OBJECT - Portable Object API:
+//-----------------------------------------------
+//
+var win;
+
+function DisplayInfo() {
+  if (isTouch) {
+    alert ("Touch found Sucess: "+isTouch);
+  } else {
+    alert ("SORRY: TOUCH NOT FOUND: "+isTouch);
+  }
+}
+  if (so_Init()) {
+      win = so_NewWindow (20, 110, 300, 250, "Janela_ Primeira");
+      so_NewButton (120, 80, 100, 30, "Is Touch", win, DisplayInfo);
+
+      so_NewWindow (250, 150, 300, 250, "Window_ | Mova-me:");
+  }
+
+</script>
+</body>
+</html>

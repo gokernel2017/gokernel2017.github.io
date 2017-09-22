@@ -1,6 +1,6 @@
 //-----------------------------------------------
-//
 // Summer OBJECT Web Implementation:
+//
 //
 //-----------------------------------------------
 //
@@ -95,7 +95,7 @@ function so_NewWindow(x,y,w,h,txt) {
       }
       this.style.zIndex = array.length;
 
-  main_widget = this;
+      main_widget = this;
 
     }, true);
 
@@ -138,7 +138,7 @@ function so_NewWindow(x,y,w,h,txt) {
       }
       this.style.zIndex = array.length;
 
-  main_widget = this;
+      main_widget = this;
 
     }, true);
 
@@ -158,7 +158,7 @@ function so_NewWindow(x,y,w,h,txt) {
 */
   }
 
-  if (isTouch) {// modile:
+  if (isTouch) {
     // buttons on title bar: Minimize, MAXIMIZE
     //
     var bmin=document.createElement("wb_min");

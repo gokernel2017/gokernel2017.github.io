@@ -1,3 +1,8 @@
+body {
+  background: #ecf0f1;
+  color: #000;
+  font-family: HelveticaNeue, 'Helvetica Neue', 'Lucida Grande', Arial, sans-serif;
+}
 widget { /* window widget */
   position: absolute;
   overflow: hidden;
@@ -5,7 +10,6 @@ widget { /* window widget */
   left: 100px;
   width: 100px;
   height: 100px;
-//  background: rgb(255,250,243);
   background: rgb(254,238,204);
   border: 1px solid #acacac;
   border-radius: 6px;
@@ -21,15 +25,9 @@ titlebar {
   height: 28px;
 
   background-image: linear-gradient(to bottom, rgb(235,235,235), rgb(213,213,213));
-/*
-<img src="close.png">
-  background-image:url('close.png');
-  background: url('close.png') 0 0;
 
-
-*/
-
-  font-size: 14pt;
+  font-family: HelveticaNeue, 'Helvetica Neue', 'Lucida Grande', Arial, sans-serif;
+  font-size: 12pt;
   line-height: 20px;
   text-align: center;
 
@@ -111,9 +109,6 @@ btmax {
 }
 
 tooltip {
-/*
-  position: relative;
-*/
   position: absolute;
 
   display: inline-block;
@@ -145,4 +140,59 @@ tooltip tooltiptext {
 }
 tooltip:hover tooltiptext {
     visibility: visible;
+}
+
+
+/**
+ * Layout
+ */
+.nav__list {
+    margin: 0;
+    padding: 0;
+}
+.nav__list a {
+    padding: .75em 1.5em;
+    transition: all .25s ease-in-out;
+}
+
+.nav__list__item {
+    border-style: solid;
+    border-width: 0 0 1px;
+}
+.nav__list__item,
+.nav__list__item a {
+    display: block;
+}
+
+/**
+ * Desktop-view
+ */
+
+@media screen and (min-width: 1024px) {
+    .nav__list > .nav__list__item {
+        border-width: 0 1px 0 0;
+    }
+    .nav__list > .nav__list__item,
+    .nav__list > .nav__list__item a {
+        display: inline-block;
+    }
+}
+
+/**
+ * Presentation
+ */
+.nav {
+  background-color: #f5f5f5;
+  border: 1px solid rgb(250,130,30);
+  border-radius: 6px;
+}
+.nav .nav__list__item {
+    border-color: #e5e5e5;
+}
+.nav a {
+    color: #555;
+    text-decoration: none;
+}
+.nav a:hover, .nav a:active, .nav a:focus {
+    background-color: #e5e5e5;
 }
