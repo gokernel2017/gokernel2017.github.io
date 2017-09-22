@@ -140,7 +140,6 @@ tooltip:hover tooltiptext {
     visibility: visible;
 }
 
-
 /**
  * Layout
  */
@@ -159,7 +158,7 @@ tooltip:hover tooltiptext {
 }
 .nav__list__item,
 .nav__list__item a {
-    display: block;
+    display: inline-block;
 }
 
 /**
