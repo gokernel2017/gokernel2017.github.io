@@ -220,12 +220,26 @@ function so_NewWindow(x,y,w,h,txt) {
   return o;
 }
 
-function so_NewButton (x,y,w,h,txt,par,func) {
+function so_NewButton (parent, call, x, y, w, h, id, flags, data_text) {
+/*
+C Implementation:
+
+extern OBJECT gaButton (
+    OBJECT  parent,
+    void (*call) (EVENT *event),
+    int x, int y, int w, int h,
+    int id,
+    int flags,
+    //---------- data ----------
+    char  *text,
+    );
+*/
+
   var o=document.createElement("button");
 
-  o.innerHTML = txt; // button text
+  o.innerHTML = data_text; // button text
 
-  o.onclick = func;
+  o.onclick = call;
 
   o.style.position = "absolute";
   o.style.left = x+'px';
@@ -233,7 +247,7 @@ function so_NewButton (x,y,w,h,txt,par,func) {
   o.style.width = w+'px';
   o.style.height = h+'px';
 
-  par.appendChild(o); // add element on parent
+  parent.appendChild(o); // add element on parent
 
   return o;
 }

@@ -17,23 +17,49 @@
 </a>
 
 <script>
+/*
 //
 //-----------------------------------------------
 // Summer OBJECT - Portable Object API:
 //-----------------------------------------------
 //
+C implemetation:
+
+extern OBJECT gaButton (
+    OBJECT  parent,
+    void (*call) (EVENT *event),
+    int x, int y, int w, int h,
+    int id,
+    int flags,
+    //---------- data ----------
+    char  *text,
+    );
+
+-----------------------------------------------
+*/
 var win;
 
-function DisplayInfo() {
+function call_button(event) {
   if (isTouch) {
     alert ("Touch found Sucess: "+isTouch);
   } else {
-    alert ("SORRY: TOUCH NOT FOUND: "+isTouch);
+    alert ("SORRY: TOUCH NOT FOUND: " + event.clientX);
   }
 }
+
   if (so_Init()) {
+
       win = so_NewWindow (20, 110, 300, 250, "Janela_ Primeira");
-      so_NewButton (120, 80, 100, 30, "Is Touch", win, DisplayInfo);
+
+      so_NewButton (
+        win,              // parent
+        call_button,      // call
+        120, 80, 100, 30, // x, y, w, h
+        0,                // id    | ... need implementation
+        0,                // flags | ... not used in WEB
+        //----- data -----
+        "Is Touch"        // text
+        );
 
       so_NewWindow (250, 150, 300, 250, "Window_ | Mova-me:");
   }
