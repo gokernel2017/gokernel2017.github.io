@@ -224,7 +224,7 @@ function so_NewButton (parent, call, x, y, w, h, id, flags, data_text) {
 /*
 C Implementation:
 
-extern OBJECT gaButton (
+extern OBJECT so_NewButton (
     OBJECT  parent,
     void (*call) (EVENT *event),
     int x, int y, int w, int h,
