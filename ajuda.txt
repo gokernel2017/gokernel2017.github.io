@@ -1,0 +1,12 @@
+
+//  o.addEventListener('click', func, false);
+
+/*
+var someInput = document.querySelector('input');
+someInput.addEventListener('click', myFunc, false);
+someInput.myParam = 'This is my parameter';
+function myFunc(evt)
+{
+  window.alert( evt.target.myParam );
+*/
+

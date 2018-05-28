@@ -184,12 +184,12 @@ tooltip:hover tooltiptext {
   border-radius: 6px;
 }
 .nav .nav__list__item {
-    border-color: #e5e5e5;
+  border-color: #e5e5e5;
 }
 .nav a {
     color: #555;
     text-decoration: none;
 }
 .nav a:hover, .nav a:active, .nav a:focus {
-    background-color: #e5e5e5;
+  background-color: #e5e5e5;
 }

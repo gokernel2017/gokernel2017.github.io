@@ -16,6 +16,8 @@ var isDown = false;
 var mx, my; // mouse_x, mouse_y
 var main_widget;
 
+var zIndexCount = 1;
+
 function so_Init() {
   isTouch = (('ontouchstart' in window) || (navigator.MaxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0));
   if (document.getElementsByTagName("body").length==0 || document.getElementsByTagName("link").length==0) {
@@ -85,15 +87,16 @@ function so_NewWindow(x,y,w,h,txt) {
             this.offsetTop  - t.clientY
           ];
       }
-      var array = document.getElementsByTagName("widget");
+//      var array = document.getElementsByTagName("widget");
 
       //
       // Envia para o TOPO O WIDGET ...
       //
-      for (var i = 0; i < array.length; i++) {
-          array[i].style.zIndex = 1;
-      }
-      this.style.zIndex = array.length;
+//      for (var i = 0; i < array.length; i++) {
+//          array[i].style.zIndex = 1;
+//      }
+//      this.style.zIndex = array.length;
+      this.style.zIndex = zIndexCount++;
 
       main_widget = this;
 
@@ -120,6 +123,7 @@ function so_NewWindow(x,y,w,h,txt) {
     //-------------------------------------------
     //
     o.addEventListener('mousedown', function(event) {
+
       if (event.clientY-this.offsetTop < 30) {
 
           isDown = true; //<<<<<<<  enable here  >>>>>>>
@@ -129,14 +133,17 @@ function so_NewWindow(x,y,w,h,txt) {
             this.offsetTop - event.clientY
           ];
       }
-      var array = document.getElementsByTagName("widget");
+//      var array = document.getElementsByTagName("widget");
       //
       // Envia para o TOPO O WIDGET ...
       //
+/*
       for (var i = 0; i < array.length; i++) {
           array[i].style.zIndex = 1;
       }
-      this.style.zIndex = array.length;
+*/
+//      this.style.zIndex = array.length;
+      this.style.zIndex = zIndexCount++;
 
       main_widget = this;
 
